@@ -1,0 +1,7 @@
+{
+  "kb_root": "C:\\Users\\wangd\\.workbuddy\\skills\\mh-flight-area-expert",
+  "repo_root": "D:\\github\\workbuddy-skills",
+  "categories": ["01-法律法规", "02-民航规章CCAR", "03-行业标准MH", "04-咨询通告AC", "05-ICAO"],
+  "python": "C:\\Users\\wangd\\.workbuddy\\binaries\\python\\envs\\default\\Scripts\\python.exe",
+  "use_ocr_if_empty": false
+}
