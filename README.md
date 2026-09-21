@@ -1,9 +1,9 @@
 # 📚 WorkBuddy Skills
 
-> 一个持续收集的 **WorkBuddy / Agent Skills** 技能合集，覆盖民航工程标准、规章知识库与工作流自动化。每个技能独立成子文件夹，互不干扰，按需取用。
+> 一个持续收集的 **WorkBuddy / Agent Skills** 技能合集，覆盖民航工程标准与规章知识库。每个技能独立成子文件夹，互不干扰，按需取用。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-3-informational.svg)](#-已收录技能)
+[![Skills](https://img.shields.io/badge/skills-2-informational.svg)](#-已收录技能)
 [![Updated](https://img.shields.io/badge/updated-2026--09-brightgreen.svg)](#)
 
 ## ✨ 为什么用这个合集
@@ -11,16 +11,15 @@
 - **单一来源** —— 所有技能集中维护，避免散落各处、版本混乱
 - **按需取用** —— 只克隆 / 复制你需要的技能子文件夹，不污染 WorkBuddy 配置
 - **修订案优先** —— 标准 / 规章类技能直接以最新修订案、现行版本为准，旧条文标记为失效
-- **可扩展知识库** —— 一个技能内可容纳多份规定（见 `mh-flight-area-expert`），并有配套入库工具
+- **可扩展知识库** —— 一个技能内可容纳多份规定（见 `mh-flight-area-expert`）
 - **持续扩展** —— 新技能以子文件夹形式加入，见下方「新增技能」
 
 ## 📦 已收录技能
 
 | 技能 | 说明 | 主题 |
 | --- | --- | --- |
-| [mh-flight-area-expert](./mh-flight-area-expert/) | 民航飞行区专家：**多规定知识库**，收录飞行区运行规章（含《运输机场运行安全管理规定》CCAR-139B 全 14 章），可跨规定定位、给带条款号的回答 | 飞行区运行规章 |
-| [mh5001-2021-flight-area-standard](./mh5001-2021-flight-area-standard/) | 《民用机场飞行区技术标准 MH 5001-2021》主文 + 第一~第四修订案知识库 | MH 5001-2021 |
-| [regulation-ingest](./regulation-ingest/) | 规章入库助手：把新的规章 PDF 自动提取、清洗、结构化，并入知识库（支持新增 / 更新两种流程） | 工具 / 工作流 |
+| [mh-flight-area-expert](./mh-flight-area-expert/) | 民航飞行区专家：**多规定知识库**，收录飞行区运行规章与技术标准，可跨规定定位、给带条款号的回答。已含 MH5001-2021（含四修订案）与《运输机场运行安全管理规定》CCAR-139B（全 14 章） | 飞行区运行规章 + 技术标准 |
+| [mh5001-2021-flight-area-standard](./mh5001-2021-flight-area-standard/) | 《民用机场飞行区技术标准 MH 5001-2021》主文 + 第一~第四修订案知识库。**已并入 `mh-flight-area-expert`**，此文件夹保留供单独安装 | MH 5001-2021 |
 
 ## 📂 仓库结构
 
@@ -32,18 +31,15 @@ workbuddy-skills/
 │   ├── SKILL.md                  # 专家人设 + 模块地图 + 路由索引
 │   ├── index/                    # by-doc / by-topic 总索引
 │   ├── kb/                       # 知识库（按类别 / 规定分子模块）
+│   │   ├── 02-民航规章CCAR/运输机场运行安全管理规定/
+│   │   └── 03-行业标准MH/mh5001-2021/
 │   ├── glossary.md               # 跨规定术语表
 │   └── scripts/search.py         # 全文 / 条款号检索
-├── mh5001-2021-flight-area-standard/   # 技能：MH5001 飞行区标准
-│   ├── SKILL.md
-│   ├── chapters/                 # 12 章摘要
-│   ├── glossary.md / patterns.md / cheatsheet.md / amendments.md
-│   └── README.md
-└── regulation-ingest/            # 技能：规章入库助手
+└── mh5001-2021-flight-area-standard/   # 技能：MH5001（已并入 expert，保留供单独安装）
     ├── SKILL.md
-    ├── ingest.config.json        # 目标知识库路径配置
-    ├── assets/module-template.md
-    └── scripts/ingest.py         # 提取 / 建模块 / 登记索引
+    ├── chapters/                 # 12 章摘要
+    ├── glossary.md / patterns.md / cheatsheet.md / amendments.md
+    └── README.md
 ```
 
 ## 🚀 快速开始
@@ -67,9 +63,9 @@ cp -r workbuddy-skills/mh-flight-area-expert "$HOME/.workbuddy/skills/"
 
 > 复制完成后**重启 WorkBuddy 会话**，技能即出现在技能列表中。
 
-## 📥 往知识库加新规定
+## 📥 知识库如何扩充
 
-`mh-flight-area-expert` 支持持续扩充：把规章 PDF 交给 WorkBuddy，配合 `regulation-ingest` 技能即可自动提取、清洗、结构化并挂入索引。若是某规定的**新版本**，走「更新流程」并**全局搜索失效引用**。详见该技能的 `SKILL.md`。
+`mh-flight-area-expert` 采用"**一个技能、多份规定**"结构：新增规定时，在 `kb/<类别>/<规定>/` 下添加 `MODULE.md` + `chapters/`，并在 `index/by-doc.md`、`index/by-topic.md` 与 `SKILL.md` 模块地图补登记。版本更新时须**全局搜索并更新失效引用**。
 
 ## ➕ 新增一个技能
 
