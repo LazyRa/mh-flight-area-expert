@@ -2,7 +2,7 @@
 
 > 一个 WorkBuddy / Agent Skills 知识库技能：把**民航飞行区运行规章与技术标准**整理成可检索、可问答、有边界的结构化知识。**一个技能、多份规定**，可跨规定定位并给出带条款号的回答。
 
-[![Regulations](https://img.shields.io/badge/regulations-3-blue.svg)](#-已收录规定)
+[![Regulations](https://img.shields.io/badge/regulations-4-blue.svg)](#-已收录规定)
 [![Amendments](https://img.shields.io/badge/amendments-1~4-green.svg)](#修订案覆盖)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -21,6 +21,7 @@
 | 02-民航规章CCAR | 运输机场运行安全管理规定（CCAR-139B） | 现行（交通运输部令 2025 年第 5 号，2026-07-01 施行） |
 | 03-行业标准MH | 民用机场飞行区技术标准（MH 5001-2021） | 现行（含第一~第四修订案，以修订案为准） |
 | 04-规范性文件 | 运输机场飞行区场地管理办法（民航规〔2024〕3号） | 现行（2024-02-01 施行，废止 2022〕9号） |
+| 04-规范性文件 | 机场助航灯光系统低电流供电实施指南（IB-CA-2025-01） | 现行（民航局机场司信息通告，2025-12-26 下发） |
 
 ## 📂 目录结构
 
@@ -33,7 +34,8 @@ mh-flight-area-expert/
 ├── kb/                            # 知识库（按类别 / 规定分子模块）
 │   ├── 02-民航规章CCAR/运输机场运行安全管理规定/   # 14 章
 │   ├── 03-行业标准MH/mh5001-2021/                 # 12 章（含四修订案）
-│   └── 04-规范性文件/运输机场飞行区场地管理办法/  # 5 章 + 2 附件
+│   ├── 04-规范性文件/运输机场飞行区场地管理办法/  # 5 章 + 2 附件
+│   └── 04-规范性文件/ib-ca-2025-01-low-current-lighting/  # 10 章 + 3 附录
 ├── glossary.md                    # 跨规定术语表
 └── scripts/search.py              # 全文 / 条款号检索
 ```
@@ -71,6 +73,8 @@ git clone https://github.com/LazyRa/mh-flight-area-expert.git \
 - `不停航施工怎么报批`（CCAR-139B）
 - `飞行区场地多久全面步行检查一次`（民航规〔2024〕3号）
 - `场务员最低配几个人`（民航规〔2024〕3号）
+- `LED 助航灯光低电流供电有哪几种方案`（IB-CA-2025-01）
+- `脉宽调光改造要换哪些设备`（IB-CA-2025-01）
 - `修订案覆盖哪些条款`
 
 ## 📥 知识库如何扩充
