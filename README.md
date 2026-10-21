@@ -2,6 +2,8 @@
 
 > 一个 WorkBuddy / Agent Skills 知识库技能：把**民航飞行区运行规章与技术标准**整理成可检索、可问答、有边界的结构化知识。**一个技能、多份规定**，可跨规定定位并给出带条款号的回答。
 
+🔗 **SkillHub 技能页**：https://skillhub.cn/skills/user_35f9abab/mh-flight-area-expert
+
 [![Regulations](https://img.shields.io/badge/regulations-10-blue.svg)](#-已收录规定)
 [![Amendments](https://img.shields.io/badge/amendments-1~5-green.svg)](#修订案覆盖)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
