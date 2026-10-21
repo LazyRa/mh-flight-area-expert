@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>民航飞行区专家 · 已入库规定清单</title>
+<style>
+  :root{
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --line:#e4e7ec;
+    --line-strong:#d0d5dd;
+    --text:#1a1d21;
+    --text-2:#475467;
+    --muted:#8b95a5;
+    --accent:#1a56db;
+    --accent-soft:#eef4ff;
+    --ccar:#6941c6;
+    --ccar-soft:#f4f0ff;
+    --mh:#0e7490;
+    --mh-soft:#e6f7fb;
+    --norm:#b54708;
+    --norm-soft:#fff4e5;
+    --ok:#067647;
+    --ok-soft:#ecfdf3;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.04);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:32px 24px 64px}
+
+  /* ---------- header ---------- */
+  header{margin-bottom:24px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;margin-bottom:8px;
+  }
+  h1{
+    font-size:26px;line-height:1.25;margin:0 0 8px;font-weight:700;letter-spacing:-.01em;
+  }
+  .sub{color:var(--text-2);font-size:14px;margin:0 0 20px;max-width:760px}
+  .stats{display:flex;flex-wrap:wrap;gap:10px}
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:10px 16px;min-width:96px;box-shadow:var(--shadow);
+  }
+  .stat b{display:block;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:-.02em}
+  .stat span{font-size:12px;color:var(--muted)}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(246,247,249,.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    padding:14px 0 12px;margin:0 0 20px;
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  }
+  .toolbar.stuck{border-bottom-color:var(--line)}
+  .search{
+    position:relative;flex:1 1 260px;max-width:360px;
+  }
+  .search input{
+    width:100%;padding:9px 12px 9px 34px;
+    border:1px solid var(--line-strong);border-radius:9px;
+    background:var(--card);color:var(--text);font-size:13.5px;font-family:inherit;
+    outline:none;transition:border-color .15s,box-shadow .15s;
+  }
+  .search input::placeholder{color:var(--muted)}
+  .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,86,219,.12)}
+  .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    border:1px solid var(--line-strong);background:var(--card);color:var(--text-2);
+    padding:6px 12px;border-radius:999px;font-size:12.5px;cursor:pointer;
+    font-family:inherit;transition:all .15s;white-space:nowrap;
+  }
+  .chip:hover{border-color:var(--text-2);color:var(--text)}
+  .chip.active{background:var(--text);border-color:var(--text);color:#fff;font-weight:600}
+  .chip .n{opacity:.6;margin-left:4px;font-variant-numeric:tabular-nums}
+  .btn{
+    margin-left:auto;border:1px solid var(--line-strong);background:var(--card);
+    color:var(--text-2);padding:6px 12px;border-radius:9px;font-size:12.5px;
+    cursor:pointer;font-family:inherit;transition:all .15s;
+  }
+  .btn:hover{border-color:var(--text-2);color:var(--text)}
+
+  /* ---------- grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 18px 16px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:12px;
+    transition:box-shadow .18s,transform .18s,border-color .18s;
+  }
+  .card:hover{
+    box-shadow:0 8px 24px rgba(16,24,40,.08);
+    border-color:var(--line-strong);
+    transform:translateY(-1px);
+  }
+  .card-top{display:flex;align-items:flex-start;gap:10px}
+  .badge{
+    font-size:11px;font-weight:700;letter-spacing:.02em;
+    padding:3px 8px;border-radius:6px;white-space:nowrap;flex:0 0 auto;
+    margin-top:2px;
+  }
+  .b-ccar{background:var(--ccar-soft);color:var(--ccar)}
+  .b-mh{background:var(--mh-soft);color:var(--mh)}
+  .b-norm{background:var(--norm-soft);color:var(--norm)}
+  .titles{min-width:0;flex:1}
+  .docno{
+    font-size:12px;font-weight:700;color:var(--accent);
+    font-variant-numeric:tabular-nums;letter-spacing:.01em;margin-bottom:2px;
+  }
+  .name{font-size:15.5px;font-weight:650;line-height:1.4;letter-spacing:-.005em}
+
+  .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--text-2)}
+  .meta .k{color:var(--muted)}
+  .pill-ok{
+    display:inline-flex;align-items:center;gap:4px;
+    background:var(--ok-soft);color:var(--ok);font-weight:600;
+    font-size:11.5px;padding:2px 8px;border-radius:6px;
+  }
+  .pill-ok::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ok)}
+
+  .statusline{font-size:12.5px;color:var(--text-2);line-height:1.55}
+
+  .chap-head{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    border-top:1px dashed var(--line);padding-top:11px;
+    font-size:12px;color:var(--muted);
+  }
+  .chap-head .cnt{font-weight:700;color:var(--text-2);font-variant-numeric:tabular-nums}
+  .toggle{
+    border:0;background:transparent;color:var(--accent);font-size:12px;
+    cursor:pointer;font-family:inherit;padding:2px 4px;border-radius:5px;
+  }
+  .toggle:hover{background:var(--accent-soft)}
+
+  .chaps{display:flex;flex-wrap:wrap;gap:5px}
+  .chaps.collapsed .c:nth-child(n+7){display:none}
+  .c{
+    font-size:11.5px;color:var(--text-2);background:#f8f9fb;
+    border:1px solid #eef0f3;border-radius:6px;padding:2px 7px;
+    white-space:nowrap;
+  }
+  .c.key{background:var(--accent-soft);border-color:#dbe6ff;color:#1a3f9e;font-weight:600}
+
+  .extra{font-size:11.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:5px}
+  .extra .x{
+    background:#f8f9fb;border:1px solid #eef0f3;border-radius:5px;padding:1px 6px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;
+  }
+
+  .path{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:10.5px;color:var(--muted);word-break:break-all;
+    border-top:1px dashed var(--line);padding-top:9px;
+  }
+
+  .empty{
+    grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);
+    background:var(--card);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  }
+
+  footer{
+    margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);line-height:1.75;
+  }
+  footer strong{color:var(--text-2)}
+  footer code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    background:#eef0f3;padding:1px 5px;border-radius:4px;font-size:11px;color:var(--text-2);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">MH Flight Area Expert · Knowledge Base</div>
+    <h1>民航飞行区专家 · 已入库规定清单</h1>
+    <p class="sub">本清单由知识库模块目录自动核对生成。每次新增规定或版本更新后，需同步更新本页与 <code>index/by-doc.md</code>。</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="toolbar" id="toolbar">
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+      </svg>
+      <input id="q" type="search" placeholder="搜索规定名称、文号或章节…" autocomplete="off">
+    </div>
+    <div class="chips" id="filters"></div>
+    <button class="btn" id="toggleAll">展开全部章节</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    <p><strong>更新规则</strong>：每次入库（新增 <code>add</code> 或更新 <code>update</code>）完成后，须同步修改本页的 <code>MODULES</code> 数据（新增一条 / 更新章节数与状态），并核对页脚“最后更新”日期。</p>
+    <p><strong>事实来源</strong>：GitHub 仓库 <code>LazyRa/mh-flight-area-expert</code>。本地技能目录 <code>~/.workbuddy/skills/mh-flight-area-expert</code> 可能被同步进程回滚，以仓库为准。</p>
+    <p><strong>说明</strong>：本页为条款定位与汇总索引，不替代规范正本；具体量值以发布正本及主管部门解释为准。图（几何图、布置图）未收录。</p>
+  </footer>
+</div>
+
+<script>
+const MODULES = [
+  {
+    cat: "02-民航规章CCAR",
+    catLabel: "民航规章",
+    badge: "b-ccar",
+    docNo: "CCAR-139B",
+    title: "运输机场运行安全管理规定",
+    status: "现行",
+    statusNote: "交通运输部令 2025 年第 5 号，2026-07-01 施行（替代民航总局令第 191 号）",
+    pub: "2026-07-01 施行",
+    ingested: "2026-09-21",
+    path: "kb/02-民航规章CCAR/运输机场运行安全管理规定/",
+    chapters: [
+      "ch01 总则","ch02 机场运行安全保障","ch03 地面车辆和人员跑道侵入防范管理",
+      "ch04 飞行区场地运维管理","ch05 外来物防范管理","ch06 目视助航设施运维管理",
+      "ch07 机坪运行管理","ch08 机场净空保护管理","ch09 鸟击及动物侵入防范管理",
+      "ch10 场道除冰雪管理","ch11 不停航施工管理","ch12 机场运行安全信息管理",
+      "ch13 法律责任","ch14 附则"
+    ],
+    extra: []
+  },
+  {
+    cat: "03-行业标准MH",
+    catLabel: "行业标准",
+    badge: "b-mh",
+    docNo: "MH 5001-2021",
+    title: "民用机场飞行区技术标准",
+    status: "现行",
+    statusNote: "2021 年发布；已并入第一~第五修订案，以修订案为准（第五修订案 2027-05-01 施行）",
+    pub: "含五份修订案",
+    ingested: "2026-09-21",
+    path: "kb/03-行业标准MH/民用机场飞行区技术标准/",
+    chapters: [
+      "ch01 总则","ch02 术语与缩略语","ch03 航空数据与道面强度","ch04 跑道与滑行道及机坪",
+      "ch05 障碍物的限制和移除","ch06 标志与标志物","ch07 助航灯光","ch08 标记牌",
+      "ch09 机坪助航设备","ch10 目视助航设施供电系统","ch11 目视助航设施监视与控制系统",
+      "ch12 标示障碍物的目视助航设施"
+    ],
+    extra: ["amendments.md","cheatsheet.md","patterns.md","glossary.md"]
+  },
+  {
+    cat: "03-行业标准MH",
+    catLabel: "行业标准",
+    badge: "b-mh",
+    docNo: "MH/T 5086-2025",
+    title: "民用机场飞行区场地基础性维护技术规范",
+    status: "现行",
+    statusNote: "2025-06-21 发布，2025-09-01 施行；同步废止 AC-140-CA-2010-3",
+    pub: "2025-09-01 施行",
+    ingested: "2026-10-20",
+    path: "kb/03-行业标准MH/民用机场飞行区场地基础性维护技术规范/",
+    chapters: [
+      "ch01 总则","ch02 术语和符号","ch03 道面标志维护","ch04 跑道除胶","ch05 土面区维护",
+      "ch06 道面清洁","ch07 排水设施维护",
+      "附录A 标志涂料技术要求","附录B 压实度及固体体积率测试方法"
+    ],
+    extra: []
+  },
+  {
+    cat: "04-规范性文件",
+    catLabel: "规范性文件",
+    badge: "b-norm",
+    docNo: "民航规〔2024〕3号",
+    title: "运输机场飞行区场地管理办法",
+    status: "现行",
+    statusNote: "2024-02-01 施行；废止民航规〔2022〕9号",
+    pub: "2024-02-01 施行",
+    ingested: "2026-09-21",
+    path: "kb/04-规范性文件/运输机场飞行区场地管理办法/",
+    chapters: [
+      "ch01 基本要求","ch02 巡视检查","ch03 场地维护","ch04 监督检查","ch05 附则",
+      "附件1 场务员最低配置","附件2 培训大纲"
+    ],
+    extra: []
+  },
+  {
+    cat: "04-规范性文件",
+    catLabel: "规范性文件",
+    badge: "b-norm",
+    docNo: "IB-CA-2025-01",
+    title: "机场助航灯光系统低电流供电实施指南",
+    status: "现行",
+    statusNote: "民航局机场司信息通告，2025-12-26 下发",
+    pub: "2025-12-26 下发",
+    ingested: "2026-09-27",
+    path: "kb/04-规范性文件/机场助航灯光系统低电流供电实施指南/",
+    chapters: [
+      "ch01 主要目的","ch02 术语和定义","ch03 概述","ch04 验证案例","ch05 低电流供电的效能",
+      "ch06 典型案例","ch07 技术路线","ch08 方案设计","ch09 系统验收","ch10 运行维护",
+      "附录A 助航灯光系统能耗计算","附录B 节能效果计算","附录C 计算范例"
+    ],
+    extra: []
+  },
+  {
+    cat: "04-规范性文件",
+    catLabel: "规范性文件",
+    badge: "b-norm",
+    docNo: "AC-137-CA-2025-02",
+    title: "跑道状态灯灯光子系统技术要求",
+    status: "现行",
+    statusNote: "民航局机场司咨询通告，2025-08-14 下发",
+    pub: "2025-08-14 下发",
+    ingested: "2026-09-27",
+    path: "kb/04-规范性文件/跑道状态灯灯光子系统技术要求/",
+    chapters: [
+      "ch1 总则","ch2 规范性引用文件","ch3 术语和定义","ch4 概述","ch5 技术要求"
+    ],
+    extra: []
+  },
+  {
+    cat: "04-规范性文件",
+    catLabel: "规范性文件",
+    badge: "b-norm",
+    docNo: "AC-158-CA-2025-03R1",
+    title: "降低运输机场飞行区运行风险设计指南",
+    status: "现行",
+    statusNote: "2025-07-14 下发；2024 年首次发布，2025 年第一次修订（R1）",
+    pub: "2025-07-14 下发",
+    ingested: "2026-10-21",
+    path: "kb/04-规范性文件/降低运输机场飞行区运行风险设计指南/",
+    chapters: [
+      "ch01 总则","ch02 跑道端部道面及标志","ch03 升降带平整范围","ch04 直立面消除",
+      "ch05 入口滑行道","ch06 快速出口滑行道","ch07 穿越滑行道","ch08 平行滑行道",
+      "ch09 绕行滑行道","ch10 机坪与跑道的联接","ch11 机坪","ch12 飞行区道路",
+      "ch13 飞行区设施编号","ch14 标志和标记牌","ch15 山区或水域进近灯光系统建设"
+    ],
+    extra: []
+  }
+];
+
+const LAST_UPDATED = "2026-10-21";
+const KEY_CHAPTERS = ["障碍物的限制和移除","道面标志维护","跑道除胶","土面区维护","机坪","标志和标记牌"];
+
+/* ---------- stats ---------- */
+const totalCh = MODULES.reduce((s,m)=>s+m.chapters.length,0);
+const cats = [...new Set(MODULES.map(m=>m.cat))];
+document.getElementById("stats").innerHTML = [
+  [MODULES.length,"已入库规定"],
+  [totalCh,"章节文件"],
+  [cats.length,"规定类别"],
+  [LAST_UPDATED,"最后更新"]
+].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
+
+/* ---------- filters ---------- */
+let activeCat = "全部";
+let query = "";
+let allExpanded = false;
+
+const filterBox = document.getElementById("filters");
+function renderFilters(){
+  const counts = {};
+  MODULES.forEach(m=>counts[m.cat]=(counts[m.cat]||0)+1);
+  const items = [["全部",MODULES.length], ...cats.map(c=>[c,counts[c]])];
+  filterBox.innerHTML = items.map(([c,n])=>
+    `<button class="chip${c===activeCat?" active":""}" data-cat="${c}">${c==="全部"?"全部":c.replace(/^\d+-/,"")}<span class="n">${n}</span></button>`
+  ).join("");
+  filterBox.querySelectorAll(".chip").forEach(b=>{
+    b.onclick = ()=>{ activeCat = b.dataset.cat; renderFilters(); render(); };
+  });
+}
+
+/* ---------- render ---------- */
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function matches(m){
+  if(activeCat!=="全部" && m.cat!==activeCat) return false;
+  if(!query) return true;
+  const hay = (m.title+" "+m.docNo+" "+m.chapters.join(" ")+" "+m.cat).toLowerCase();
+  return hay.includes(query.toLowerCase());
+}
+
+function render(){
+  const grid = document.getElementById("grid");
+  const list = MODULES.filter(matches);
+  if(!list.length){
+    grid.innerHTML = `<div class="empty">没有匹配的规定或章节<br><span style="font-size:12.5px">试试其它关键词，或点“全部”</span></div>`;
+    return;
+  }
+  grid.innerHTML = list.map((m,i)=>{
+    const chaps = m.chapters.map(c=>{
+      const key = KEY_CHAPTERS.some(k=>c.includes(k)) ? " key" : "";
+      return `<span class="c${key}">${esc(c)}</span>`;
+    }).join("");
+    const extra = m.extra.length
+      ? `<div class="extra">${m.extra.map(x=>`<span class="x">${esc(x)}</span>`).join("")}</div>` : "";
+    const collapsed = (!allExpanded && m.chapters.length>6) ? " collapsed" : "";
+    const toggle = m.chapters.length>6
+      ? `<button class="toggle" data-idx="${i}">展开 ${m.chapters.length} 项</button>` : "";
+    return `<article class="card">
+      <div class="card-top">
+        <span class="badge ${m.badge}">${esc(m.catLabel)}</span>
+        <div class="titles">
+          <div class="docno">${esc(m.docNo)}</div>
+          <div class="name">${esc(m.title)}</div>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="pill-ok">${esc(m.status)}</span>
+        <span><span class="k">施行</span> ${esc(m.pub)}</span>
+        <span><span class="k">入库</span> ${esc(m.ingested)}</span>
+      </div>
+      <div class="statusline">${esc(m.statusNote)}</div>
+      <div class="chap-head">
+        <span>章节 <span class="cnt">${m.chapters.length}</span> 项</span>
+        ${toggle}
+      </div>
+      <div class="chaps${collapsed}" data-chaps="${i}">${chaps}</div>
+      ${extra}
+      <div class="path">${esc(m.path)}</div>
+    </article>`;
+  }).join("");
+
+  grid.querySelectorAll(".toggle").forEach(btn=>{
+    btn.onclick = ()=>{
+      const box = grid.querySelector(`[data-chaps="${btn.dataset.idx}"]`);
+      const collapsed = box.classList.toggle("collapsed");
+      btn.textContent = collapsed ? `展开 ${box.children.length} 项` : "收起";
+    };
+  });
+}
+
+/* ---------- events ---------- */
+document.getElementById("q").addEventListener("input", e=>{
+  query = e.target.value.trim(); render();
+});
+document.getElementById("toggleAll").addEventListener("click", e=>{
+  allExpanded = !allExpanded;
+  e.target.textContent = allExpanded ? "收起全部章节" : "展开全部章节";
+  render();
+});
+const tb = document.getElementById("toolbar");
+window.addEventListener("scroll", ()=>{
+  tb.classList.toggle("stuck", window.scrollY > 40);
+}, {passive:true});
+
+renderFilters();
+render();
+</script>
+</body>
+</html>
