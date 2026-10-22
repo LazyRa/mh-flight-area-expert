@@ -4,7 +4,7 @@
 
 🔗 **SkillHub 技能页**：https://skillhub.cn/skills/user_35f9abab/mh-flight-area-expert
 
-[![Regulations](https://img.shields.io/badge/regulations-15-blue.svg)](#-已收录规定)
+[![Regulations](https://img.shields.io/badge/regulations-16-blue.svg)](#-已收录规定)
 [![Amendments](https://img.shields.io/badge/amendments-1~5-green.svg)](#修订案覆盖)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -32,6 +32,7 @@
 | 03-行业标准MH | 机场环氧沥青道面设计与施工技术规范（MH/T 5041-2019） | 现行（2019-12-01 施行） |
 | 03-行业标准MH | 机坪升降式高杆灯（MH/T 6013-2018） | 现行（2018-11-01 实施，代替 1999 版） |
 | 03-行业标准MH | 民用机场机坪泛光照明技术要求（MH/T 6108-2014） | 现行（2014-12-01 实施） |
+| 03-行业标准MH | 民用机场水泥混凝土道面接缝材料应用技术规范（MH/T 5090-2025） | 现行（2026-01-01 施行） |
 | 04-规范性文件 | 运输机场飞行区场地管理办法（民航规〔2024〕3号） | 现行（2024-02-01 施行，废止 2022〕9号） |
 | 04-规范性文件 | 机场助航灯光系统低电流供电实施指南（IB-CA-2025-01） | 现行（民航局机场司信息通告，2025-12-26 下发） |
 | 04-规范性文件 | 跑道状态灯灯光子系统技术要求（AC-137-CA-2025-02） | 现行（民航局机场司咨询通告，2025-08-14 下发） |
@@ -127,6 +128,9 @@ git clone https://github.com/LazyRa/mh-flight-area-expert.git \
 - `飞机机位的照度标准值是多少`（MH/T 6108-2014）
 - `机坪照明眩光指数限值是多少`（MH/T 6108-2014）
 - `机坪照度多久检测一次`（MH/T 6108-2014）
+- `填缝密封材料的表干时间要求多少`（MH/T 5090-2025）
+- `预塑嵌缝条要几个孔、压缩应力多少`（MH/T 5090-2025）
+- `接缝材料失效到什么程度要更换`（MH/T 5090-2025）
 - `修订案覆盖哪些条款`
 
 ## 📥 知识库如何扩充
