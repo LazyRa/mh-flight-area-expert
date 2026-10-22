@@ -4,7 +4,7 @@
 
 🔗 **SkillHub 技能页**：https://skillhub.cn/skills/user_35f9abab/mh-flight-area-expert
 
-[![Regulations](https://img.shields.io/badge/regulations-12-blue.svg)](#-已收录规定)
+[![Regulations](https://img.shields.io/badge/regulations-13-blue.svg)](#-已收录规定)
 [![Amendments](https://img.shields.io/badge/amendments-1~5-green.svg)](#修订案覆盖)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -29,6 +29,7 @@
 | 03-行业标准MH | 民用机场飞行区集水口顶盖和地井顶盖（MH/T 6107-2014） | 现行（2014-10-01 施行；含 2023 第 1 号修改单） |
 | 03-行业标准MH | 民用机场水泥混凝土面层施工技术规范（MH 5006-2026） | 现行（2026-10-15 施行，代替 MH 5006-2015） |
 | 03-行业标准MH | 民用航空X波段场面监视雷达设备技术要求（MH/T 4043-2026） | 现行（2026-05-01 实施，代替 MH/T 4043-2015） |
+| 03-行业标准MH | 机场环氧沥青道面设计与施工技术规范（MH/T 5041-2019） | 现行（2019-12-01 施行） |
 | 04-规范性文件 | 运输机场飞行区场地管理办法（民航规〔2024〕3号） | 现行（2024-02-01 施行，废止 2022〕9号） |
 | 04-规范性文件 | 机场助航灯光系统低电流供电实施指南（IB-CA-2025-01） | 现行（民航局机场司信息通告，2025-12-26 下发） |
 | 04-规范性文件 | 跑道状态灯灯光子系统技术要求（AC-137-CA-2025-02） | 现行（民航局机场司咨询通告，2025-08-14 下发） |
@@ -115,6 +116,9 @@ git clone https://github.com/LazyRa/mh-flight-area-expert.git \
 - `混凝土养生期至少多少天`（MH 5006-2026）
 - `刻槽有哪两种标准规格`（MH 5006-2026）
 - `场面监视雷达最大作用距离要求多少`（MH/T 4043-2026）
+- `环氧沥青道面的设计年限是几年`（MH/T 5041-2019）
+- `容留时间是什么意思、怎么定`（MH/T 5041-2019）
+- `环氧沥青动稳定度要求多少`（MH/T 5041-2019）
 - `修订案覆盖哪些条款`
 
 ## 📥 知识库如何扩充
